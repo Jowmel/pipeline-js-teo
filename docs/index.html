@@ -1,1 +1,71 @@
-<a href="login.html">LOGIN HERE</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+        .login-btn {
+            position: relative;
+            padding: 16px 48px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            background-color: #3b82f6;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+        }
+        .login-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px -5px rgba(59, 130, 246, 0.5);
+            background-color: #2563eb;
+        }
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .login-btn:hover::before {
+            opacity: 1;
+        }
+        .login-btn span {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <a href="login.html" class="login-btn">
+        <span>Login Here</span>
+    </a>
+
+    <script>
+        const loginBtn = document.querySelector('.login-btn');
+        
+        loginBtn.addEventListener('mouseenter', () => {
+            loginBtn.style.transform = 'scale(1.05)';
+        });
+        
+        loginBtn.addEventListener('mouseleave', () => {
+            loginBtn.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
