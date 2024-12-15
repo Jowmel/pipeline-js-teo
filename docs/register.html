@@ -3,40 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Cyberpunk Register</title>
     <style>
-        /* Reset default styling */
+        :root {
+            --primary-color: #00ffff;  /* Bright cyan */
+            --secondary-color: #ff00ff;  /* Neon magenta */
+            --background-color: #0a0a1a;  /* Deep dark blue-black */
+            --text-color: #e0e0ff;  /* Soft electric blue */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Orbitron', 'Arial', sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-image: url("register.gif");
+            background: linear-gradient(45deg, var(--background-color), #1a1a3a);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-repeat: no-repeat;
-            background-size: cover; /* Ensures the image covers the entire background */
-            background-position: center; /* Centers the image in the viewport */
-            color: #333;
+            overflow: hidden;
+            color: var(--text-color);
+        }
+
+        /* Animated background grid effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200vh;
+            background: transparent repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.03) 0,
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            animation: backgroundGrid 10s linear infinite;
+        }
+
+        @keyframes backgroundGrid {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .container {
-            background: bisque;
-            width: 350px;
-            padding: 20px 30px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            position: relative;
+            background: rgba(10, 10, 26, 0.8);
+            width: 400px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 20px var(--primary-color), 
+                0 0 40px rgba(0, 255, 255, 0.5),
+                inset 0 0 15px rgba(255, 0, 255, 0.3);
+            border: 2px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
-            color: brown;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--primary-color);
         }
 
         form {
@@ -46,56 +85,67 @@
 
         label {
             font-size: 14px;
-            margin-bottom: 5px;
-            color: brown;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        input::placeholder {
-    color: peachpuff; /* Brown color */
-    font-style: italic; /* Optional: Adds an italic style for better distinction */
-    opacity: 1; /* Ensures the placeholder is fully visible (default is 0.5) */
-}
-
 
         input[type="text"], input[type="password"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            outline: none;
-            color: brown;
+            padding: 12px;
+            background: rgba(20, 20, 50, 0.7);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(0, 255, 255, 0.5);
+            text-transform: lowercase;
+            letter-spacing: 1px;
         }
 
         input:focus {
-            border-color: beige;
+            outline: none;
+            box-shadow: 0 0 15px var(--secondary-color);
+            border-color: var(--secondary-color);
         }
 
         button {
-            padding: 10px;
-            background: burlywood;
-            color: brown;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--background-color);
             font-size: 16px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background: cornsilk;
+            background: var(--secondary-color);
+            box-shadow: 0 0 20px var(--secondary-color);
         }
 
         p {
-            margin-top: 10px;
+            margin-top: 20px;
             text-align: center;
             font-size: 14px;
         }
 
         p a {
+            color: var(--primary-color);
             text-decoration: none;
-            color: brown;
+            transition: color 0.3s ease;
         }
 
         p a:hover {
+            color: var(--secondary-color);
             text-decoration: underline;
         }
     </style>
@@ -105,10 +155,10 @@
         <h2>Register</h2>
         <form id="registerForm">
             <label for="emailPhone">Email or Phone:</label>
-            <input type="text" id="emailPhone" name="emailPhone" required placeholder="Enter Email or Phone">
+            <input type="text" id="emailPhone" name="emailPhone" required placeholder="enter email or phone">
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Enter Password">
+            <input type="password" id="password" name="password" required placeholder="enter password">
 
             <button type="submit">Register</button>
         </form>
